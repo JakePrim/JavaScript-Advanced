@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //自定义事件
+    class MyEvent{
+        constructor(){
+            this.handler = {};
+        }
+        addEvent(eventName,fn){
+            //保存事件
+            if (typeof this.handler[eventName] === 'undefined') {
+                this.handler[eventName] = [];
+            }
+            this.handler[eventName].push(fn);
+        }
+        trigger(eventName){
+            //执行事件
+            if (typeof this.handler[eventName] === 'undefined') {
+                return;
+            }
+            this.handler[eventName].forEach(ele=>{
+                ele();//执行方法
+            });
+        }
+    }
+
+    function a(){
+        console.log("a");
+    }
+    function b(){
+        console.log("b");
+    }
+
+    let myevent = new MyEvent();
+    myevent.addEvent('event1',a);
+    myevent.addEvent('event1',b);
+    myevent.trigger('event1');
+</script>
+</body>
+</html>

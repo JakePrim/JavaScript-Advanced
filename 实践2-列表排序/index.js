@@ -68,6 +68,7 @@ ages.forEach((item, index) => {
         ageIndex = index;
         //注意:data排序后会改变原有数据 使用深拷贝 ...[] 扩展操作符只能实现浅拷贝
         let res = ageSorts[index](JSON.parse(JSON.stringify(data)));
+        //年龄排序完毕后 在根据性别排序
         let newData = genderSorts[genderIndex](JSON.parse(JSON.stringify(res)));
         render(newData);
     });
@@ -90,6 +91,7 @@ genders.forEach((item, index) => {
         genderIndex = index;
         //注意:data排序后会改变原有数据 使用深拷贝 ...[] 扩展操作符只能实现浅拷贝
         let res = genderSorts[index](JSON.parse(JSON.stringify(data)));
+        //性别排序完成后 在根据年龄排序
         let newData = ageSorts[ageIndex](JSON.parse(JSON.stringify(res)));
         render(newData);
     });
