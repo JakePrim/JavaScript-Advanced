@@ -95,7 +95,6 @@ class MPromise {
             this.rejectQueue.push((val)=>{
                 onrejected && onrejected(val);
                 reject(val);
-                return this;
             });
 
         });

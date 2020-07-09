@@ -13,7 +13,7 @@
 </body>
 <script>
     let m = new MPromise((resolve, reject) => {
-        resolve('1');
+        // resolve('1');
         reject('2');
     });
     // console.log(m);
@@ -21,6 +21,8 @@
         console.log(res);
     }).then(res => {
         console.log(res);
+    }).catch(err=>{
+        console.log(err);
     });
     console.log(p);
 
